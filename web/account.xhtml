@@ -1,0 +1,57 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html">
+    <h:head>
+        <title>Welcome to the bank</title>
+    </h:head>
+    <h:body>
+        <h1>Currency Converter</h1>
+
+        <h:form>
+            <h:commandButton value="Initialize Default Conversion" action="#{acctManager.initialize}"/>
+            <hr/>
+            <p>
+                <h:outputLabel for="inputCurr1" value="Convert "/>                                
+                <h:inputText id="amount" value="#{acctManager.amount}"/>
+                <h:inputText id="inputCurr1" value="#{acctManager.inputCurr1}" />                
+                <h:outputLabel for="inputCurr2" value=" to "/>
+                <h:inputText id="inputCurr2" value="#{acctManager.inputCurr2}"/>
+
+                       
+                <i><br></br><h:outputLabel value="Default available currencies : SEK EUR USD GBP"/></i>
+           
+            
+
+            </p>
+            <p>
+                <h:commandButton value="Convert" action="#{acctManager.getCurrency}"/>
+            </p>
+            <p>
+                <h:outputLabel  rendered="#{acctManager.currentAcct != null}"  value="Result : "/>
+                <h:outputText  value="#{acctManager.inputCurr2} #{acctManager.newAmount}"/>                
+            </p>
+
+            <hr/>
+
+
+            <h3>Insert New Conversion</h3>
+            <p>
+                <h:outputLabel for="conversionName" value="Conversion : "/>
+                <h:inputText id="conversionName" value="#{acctManager.newConversionName}"/>
+                <i><h:outputLabel for="conversionName" value=" example : AUDSEK "/></i>
+            </p>
+            <p>
+                <h:outputLabel for="conversionValue" value="Rate : "/>
+                <h:inputText id="conversionValue" value="#{acctManager.newConversionValue}"/>
+
+            </p>
+            <p>
+                <h:commandButton value="Insert Data" action="#{acctManager.createAccount}"/>
+            </p>
+            <hr/>
+        </h:form>
+
+    </h:body>
+</html>
+
